@@ -201,7 +201,7 @@ stop_if_installed php7.3-fpm
 stop_if_installed php8.0-fpm
 stop_if_installed php8.1-fpm
 stop_if_installed php8.2-fpm
-stop_if_installed mysql-common
+stop_if_installed -common
 stop_if_installed mariadb-server
 
 # We don't want automatic updates since they might fail (we use our own script)
@@ -357,10 +357,10 @@ install_if_not postgresql
 # Create DB
 cd /tmp
 sudo -u postgres psql <<END
-CREATE USER $PGDB_USER WITH PASSWORD '$PGDB_PASS';
-CREATE DATABASE nextcloud_db WITH OWNER $PGDB_USER TEMPLATE template0 ENCODING 'UTF8';
+CREATE USER $techhub WITH PASSWORD '$1234five';
+CREATE DATABASE nextcloud_db WITH OWNER $techhub TEMPLATE template0 ENCODING 'UTF8';
 END
-print_text_in_color "$ICyan" "PostgreSQL password: $PGDB_PASS"
+print_text_in_color "$ICyan" "PostgreSQL password: $1234five"
 systemctl restart postgresql.service
 
 # Install Apache
